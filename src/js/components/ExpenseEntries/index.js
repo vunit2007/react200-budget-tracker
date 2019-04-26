@@ -11,6 +11,5 @@ function mapStoreToProps(store) {
   };
 }
 
-// This might look odd but, connect returns a function,
-// that is then called with the component itself.
+// connect returns a function,
 export default connect(mapStoreToProps)(ExpenseEntries);

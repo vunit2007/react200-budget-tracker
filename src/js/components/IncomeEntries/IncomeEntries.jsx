@@ -1,20 +1,10 @@
 import React from 'react';
 
-// We'll need to import all those action creators.
-import {
-  updateIncomeDescription,
-  updateIncomeAmount,
-  addIncome
-} from './incomeActions';
+import { updateIncomeDescription, updateIncomeAmount, addIncome } from './incomeActions';
 
 export default class IncomeEntries extends React.Component {
   constructor(props) {
     super(props);
-
-    // Here we're binding these methods to the context
-    // of the components. This only has to be done,
-    // because these methods are called back by
-    // event emitters (which lose context).
     this.handleDescriptionInput = this.handleDescriptionInput.bind(this);
     this.handleAmountInput = this.handleAmountInput.bind(this);
     this.handleAddIncome = this.handleAddIncome.bind(this);
@@ -39,18 +29,19 @@ export default class IncomeEntries extends React.Component {
   }
 
   render() {
-    // These values were provided by connect()
     const { description, amount, lineItems } = this.props;
     return (
-      <div className='card border-success mb-3'>
-        <div className='card-header text-white bg-success'>Income Entries</div>
+      <div className='shadow'>
+        <div className='card-header text-white bg-success font-weight-bold text-uppercase'>
+          Income Entries
+        </div>
         <div className='card-body'>
           <form>
             <div className='form-group'>
               <label htmlFor='income-description'>Description</label>
               <input
                 type='text'
-                className='form-control'
+                className='form-control bg-transparent'
                 id='income-description'
                 value={ description }
                 onChange={ this.handleDescriptionInput }
@@ -59,38 +50,45 @@ export default class IncomeEntries extends React.Component {
             <div className='form-group'>
               <label htmlFor='income-amount'>Amount</label>
               <div className='input-group'>
-                <span className='input-group-addon'>$</span>
+                <div className='input-group-prepend'>
+                  <span className='input-group-text' id='basic-addon1'>
+                    $
+                  </span>
+                </div>
                 <input
-                  type='text'
-                  className='form-control'
+                  type='number'
+                  className='form-control bg-transparent w-50'
+                  placeholder='0.00'
+                  aria-label='amount'
+                  aria-describedby='basic-addon1'
                   id='income-amount'
                   value={ amount }
                   onChange={ this.handleAmountInput }
                 />
               </div>
             </div>
-            <button
-              type='button'
-              className='btn btn-success col-12 mb-5'
-              onClick={ this.handleAddIncome }
-            >+ Add Income
-            </button>
+            <div className='text-right mb-5'>
+              <button type='button' className='btn btn-success' onClick={ this.handleAddIncome }>
+                <i className='fa fa-plus pr-2' />
+                Add Income
+              </button>
+            </div>
             <table className='table table-sm table-hover'>
               <thead>
                 <tr>
-                  <th>Description</th>
-                  <th style={ { width: 120 } } >Amount</th>
+                  <th className='text-secondary'>Description</th>
+                  <th className='text-secondary' style={ { width: 120 } }>
+                    Amount
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {
-                  lineItems.map(lineItem => (
-                    <tr>
-                      <td>{ lineItem.description }</td>
-                      <td>${ lineItem.amount.toFixed(2) }</td>
-                    </tr>
-                  ))
-                }
+                {lineItems.map(lineItem => (
+                  <tr>
+                    <td>{lineItem.description}</td>
+                    <td>${lineItem.amount.toFixed(2)}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </form>

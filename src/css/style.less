@@ -1,0 +1,53 @@
+body {
+  font-family: "Work Sans", sans-serif;
+  background: url(../img/header-bg0.png) fixed;
+  background-size: cover;
+}
+* {
+  box-sizing: border-box;
+}
+h1 {
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  font-family: "Montserrat", sans-serif;
+}
+img,
+.fa-quote-left,
+.quote-border {
+  -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+}
+.border-bottom {
+  border-width: 2px !important;
+}
+.card-header,
+.btn,
+img {
+  opacity: 0.7;
+}
+blockquote span {
+  opacity: 0.5;
+}
+.quote-border {
+  display: flex;
+  align-self: flex-end;
+  height: 86px;
+  width: 10px;
+}
+.fa-quote-left,
+.quote-border {
+  opacity: 0.4;
+}
+
+@media (max-width: 767px) {
+  .display-3 {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 460px) {
+  .display-3 {
+    font-size: 2rem;
+  }
+  .blockquote {
+    font-size: 1rem;
+  }
+}
