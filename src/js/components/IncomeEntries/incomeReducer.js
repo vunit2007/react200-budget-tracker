@@ -8,9 +8,9 @@ export default function IncomeReducer(state = defaultState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    // Here in the case of the update description action
+    // update description action
     case 'UPDATE_INCOME_DESCRIPTION': {
-      // we'll return an object
+      // return an object
       return {
         // with all the previous state
         ...state,
